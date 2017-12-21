@@ -8,7 +8,7 @@ export default function (JXT) {
 
     let MAMQuery = JXT.define({
         name: 'mam',
-        namespace: NS.MAM_2,
+        namespace: NS.MAM_1,
         element: 'query',
         fields: {
             queryid: Utils.attribute('queryid'),
@@ -18,7 +18,7 @@ export default function (JXT) {
 
     let Result = JXT.define({
         name: 'mamItem',
-        namespace: NS.MAM_2,
+        namespace: NS.MAM_1,
         element: 'result',
         fields: {
             queryid: Utils.attribute('queryid'),
@@ -28,7 +28,7 @@ export default function (JXT) {
 
     let Fin = JXT.define({
         name: 'mamResult',
-        namespace: NS.MAM_2,
+        namespace: NS.MAM_1,
         element: 'fin',
         fields: {
             complete: Utils.boolAttribute('complete'),
@@ -38,7 +38,7 @@ export default function (JXT) {
 
     let Prefs = JXT.define({
         name: 'mamPrefs',
-        namespace: NS.MAM_2,
+        namespace: NS.MAM_1,
         element: 'prefs',
         fields: {
             defaultCondition: Utils.attribute('default'),
@@ -46,12 +46,12 @@ export default function (JXT) {
                 get: function () {
 
                     let results = [];
-                    let container = Utils.find(this.xml, NS.MAM_2, 'always');
+                    let container = Utils.find(this.xml, NS.MAM_1, 'always');
                     if (container.length === 0) {
                         return results;
                     }
                     container = container[0];
-                    let jids = Utils.getMultiSubText(container, NS.MAM_2, 'jid');
+                    let jids = Utils.getMultiSubText(container, NS.MAM_1, 'jid');
                     jids.forEach(function (jid) {
 
                         results.push(new JID(jid.textContent));
@@ -61,8 +61,8 @@ export default function (JXT) {
                 set: function (value) {
 
                     if (value.length > 0) {
-                        let container = Utils.findOrCreate(this.xml, NS.MAM_2, 'always');
-                        Utils.setMultiSubText(container, NS.MAM_2, 'jid', value);
+                        let container = Utils.findOrCreate(this.xml, NS.MAM_1, 'always');
+                        Utils.setMultiSubText(container, NS.MAM_1, 'jid', value);
                     }
                 }
             },
@@ -70,12 +70,12 @@ export default function (JXT) {
                 get: function () {
 
                     let results = [];
-                    let container = Utils.find(this.xml, NS.MAM_2, 'always');
+                    let container = Utils.find(this.xml, NS.MAM_1, 'always');
                     if (container.length === 0) {
                         return results;
                     }
                     container = container[0];
-                    let jids = Utils.getMultiSubText(container, NS.MAM_2, 'jid');
+                    let jids = Utils.getMultiSubText(container, NS.MAM_1, 'jid');
                     jids.forEach(function (jid) {
 
                         results.push(new JID(jid.textContent));
@@ -85,8 +85,8 @@ export default function (JXT) {
                 set: function (value) {
 
                     if (value.length > 0) {
-                        let container = Utils.findOrCreate(this.xml, NS.MAM_2, 'never');
-                        Utils.setMultiSubText(container, NS.MAM_2, 'jid', value);
+                        let container = Utils.findOrCreate(this.xml, NS.MAM_1, 'never');
+                        Utils.setMultiSubText(container, NS.MAM_1, 'jid', value);
                     }
                 }
             }
